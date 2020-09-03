@@ -1,4 +1,4 @@
-﻿print("Print e for exit")
+print("Print e for exit")
 def check(num, denom):
     if num % denom == 0:
         return True
@@ -20,9 +20,11 @@ while True:
     except ValueError:
         print("ERROR. I say NUMBER\n")
         continue
+    if num < 0:
+        print("Wrong number, print natural number\n")
     denominator = get_denominator(num)
     if denominator == 0:
-        print("Sum of digits in number is 0, print another number\n")
+        print("Wrong number, print another number\n")
         continue
     if check(num, denominator):
         print(uinput + " - the Niven number\n")
@@ -48,5 +50,6 @@ while True:
 # 6505 - Множественное число
 # 1a - Неверный ввод
 # 0 - Недопустимое число
+# -111 - Недопустимое число
 # 76 - Не число Нивена
 # e - Завершение работы
