@@ -1,4 +1,4 @@
-print("Print e for exit")
+﻿print("Print e for exit")
 def check(num, denom):
     if num % denom == 0:
         return True
@@ -49,5 +49,4 @@ while True:
 # 1a - Неверный ввод
 # 0 - Недопустимое число
 # 76 - Не число Нивена
-# e - Навершение работы
-#
+# e - Завершение работы
