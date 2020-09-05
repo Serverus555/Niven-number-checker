@@ -30,39 +30,69 @@ e - Завершение работы
 """
 
 
-def check(num, denom):
+def check(num, denom=None):
+    """Функция проверяет остаток от деления
+    Может принимать как 1 аргумент, так и 2
+    При передаче 1-го аргумента - передаётся остаток от деления
+    Если 2 - передаётся делимое и делитель соответственно
+    """
+    # Проверка на наличие 2-го аргумента
+    if denom is None:
+        if num == 0:
+            return True
+        return False
+        # Проверка остатка от деления
     if num % denom == 0:
         return True
     return False
 
 
 def get_denominator(num):
+    """Функция вычисляет делитель
+    Складывает цифры из каждого разряда числа
+    """
     denominator = 0
+    # Выполняем, пока в числе не останется цифр
     while num != 0:
+        # Складываем
         denominator += num % 10
+        # Уменьшаем количество разрядов
         num //= 10
     return denominator
 
 
 def case_handler(uinput):
+    # Объявляем переменную для числа
     num = 0
+
+    # Пытаемся преобразовать строковый ввод в число
     try:
         num = int(uinput)
     except ValueError:
+        # Если не получилось преобразовать str в int
+        # То выводим соответствующее сообщение
         print("ERROR. I say NUMBER\n")
         return
-    if num < 0:
-        print("Wrong number, print natural number\n")
-        return
-    denominator = get_denominator(num)
-    if denominator == 0:
+
+    # Проверка числа
+    # Если число меньше или равно 0
+    # То число Нивена вычислить невозможно
+    if num <= 0:
+        # Если было введено недопустимое число
+        # То выводим соответствующее сообщение
         print("Wrong number, print another number\n")
         return
+    # Вычисляем знаменатель
+    denominator = get_denominator(num)
+    # Вычисляем остаток от деления
+    remainder = num % denominator
 
-    if check(num, denominator):
+    # Передаём право на проверку функции check
+    if check(remainder):
+        # Выводим результат проверки
         print(uinput + " - the Niven number\n")
     else:
-        remainder = num % denominator
+        # Проверяем, является ли число множестенным числам Нивена
         if check(remainder, get_denominator(remainder)):
             print(uinput + " - the plural Niven number\n")
         else:
@@ -70,12 +100,22 @@ def case_handler(uinput):
 
 
 def main():
+    # Зациклим программу для беспрерывной работы
     while True:
+        # Получаем ввод
         uinput = input("Print number\n")
+        # Проверяем, является ли ввод командой для завершения работы
+        # Если да, то прощаемся и завершаем цикл
         if uinput == "e":
             print("Goodbye!")
             break
+        # В ином случае переходим к основной логике
         case_handler(uinput)
 if __name__ == '__main__':
+    """
+    Точка входа в программу, необходим для корректного
+    запуска с помощью команды:
+        python -m Program.py
+    """
     print("Print e for exit")
     main()
