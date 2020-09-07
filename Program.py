@@ -67,11 +67,13 @@ def case_handler(uinput):
 
     # Пытаемся преобразовать строковый ввод в число
     try:
+        if float(uinput).is_integer():
+        raise ValueError
         num = int(uinput)
     except ValueError:
         # Если не получилось преобразовать str в int
         # То выводим соответствующее сообщение
-        print("ERROR. I say NUMBER\n")
+        print("ERROR. Print integer NUMBER\n")
         return
 
     # Проверка числа
