@@ -67,7 +67,7 @@ def case_handler(uinput):
 
     # Пытаемся преобразовать строковый ввод в число
     try:
-        if float(uinput).is_integer():
+        if not (float(uinput).is_integer()):
         raise ValueError
         num = int(uinput)
     except ValueError:
