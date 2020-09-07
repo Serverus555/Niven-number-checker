@@ -102,6 +102,7 @@ def case_handler(uinput):
 
 
 def main():
+    print("Print e for exit")
     # Зациклим программу для беспрерывной работы
     while True:
         # Получаем ввод
@@ -119,5 +120,4 @@ if __name__ == '__main__':
     запуска с помощью команды:
         python -m Program.py
     """
-    print("Print e for exit")
     main()
